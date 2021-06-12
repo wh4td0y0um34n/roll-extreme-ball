@@ -41,7 +41,7 @@ public class ControlBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float Horizontal = Input.GetAxis("Horizontal");
+        float Horizontal = -Input.GetAxis("Horizontal");
         rb.AddTorque(transform.forward * torque * Horizontal);
 
         float Vertical = Input.GetAxis("Vertical");
