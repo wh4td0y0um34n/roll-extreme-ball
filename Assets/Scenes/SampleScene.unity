@@ -422,9 +422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a70e9bcff1e4e46bdf2cdf7f96ae6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xForce: 5
-  zForce: 5
-  yForce: 300
+  torque: 100
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 3
+  isGrounded: 1
 --- !u!54 &1482406271
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -448,7 +449,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482406269}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f858d2b338dd42e42849c6286ce084f2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
