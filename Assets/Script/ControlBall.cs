@@ -21,7 +21,7 @@ public class ControlBall : MonoBehaviour
     // public float xForce = 10.0f;  
     // public float zForce = 10.0f;  
     // public float yForce = 500.0f;  
-  
+    public float speed;
     private Rigidbody rb;
     public float torque;
     public Vector3 jump;
@@ -34,18 +34,23 @@ public class ControlBall : MonoBehaviour
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
-    void OnCollisionStay(){
+    void OnCollisionEnter(){
         isGrounded = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float Horizontal = -Input.GetAxis("Horizontal");
-        rb.AddTorque(transform.forward * torque * Horizontal);
+        // Set some local float variables equal to the value of our Horizontal and Vertical Inputs
+        float moveHorizontal = Input.GetAxis ("Horizontal");
+        float moveVertical = Input.GetAxis ("Vertical");
 
-        float Vertical = Input.GetAxis("Vertical");
-        rb.AddTorque(transform.right * torque * Vertical);
+        // Create a Vector3 variable, and assign X and Z to feature our horizontal and vertical float variables above
+        Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+
+        // Add a physical force to our Player rigidbody using our 'movement' Vector3 above, 
+        // multiplying it by 'speed' - our public player speed that appears in the inspector
+        rb.AddForce (movement * speed);
 
         if(Input.GetKeyDown(KeyCode.Space)&& isGrounded){
             rb.AddForce(jump* jumpForce, ForceMode.Impulse);
